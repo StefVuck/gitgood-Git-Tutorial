@@ -11,7 +11,7 @@ After this we commit like normal.
 So lets do this, in your terminal run:
 `touch newfile.txt` This simple command just makes a new file called `newfile.txt`
 
-Now we use what we just learnt.
+Now we use what we just learnt. 
 
 Use add, commit, and push to get this new file onto your remote repo.
 .
