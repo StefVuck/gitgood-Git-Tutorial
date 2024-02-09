@@ -1,30 +1,30 @@
-name: Test Run on Commit
+name: Post-Push Update
 
 on:
   push:
     branches:
-      - Chapter1
+      - Chapter2
 
 jobs:
-  test:
+  update-file:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout the repository
         uses: actions/checkout@v2
-
-      - name: Check for typo error
-        uses: actions/github-script@v4
         with:
-          script: |
-            const fs = require('fs');
-            const filePath = './myfile.py';
-            const expectedLine = 'print("This is a typo error. It should be print instead of pront.")';
+          fetch-depth: 0 # Fetch all history for all tags and branches
 
-            const fileContent = fs.readFileSync(filePath, 'utf8');
-            if (fileContent.includes(expectedLine)) {
-              console.log('No typo error found.');
-            } else {
-              console.error('Typo error found. Please correct the line in myfile.py.');
-              process.exit(1);
-            }
+      - name: Configure user name and email
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Update or create file
+        run: |
+          echo "Updated on $(date)" > file-to-update.txt
+
+      - name: Commit and push if there are changes
+        run: |
+          git add file-to-update.txt
+          git commit -m "Automatically update file" || exit 0 # Exit gracefully if no changes
+          git push
