@@ -1,48 +1,47 @@
-# Chapter 1: Commits and Pushes
+# Chapter 2: Adding & Group Work on git 
+## Git Add
+Sometimes for your project you want to add new files that didnt exist before.
+Git by default will only look at the files it knows to look (tracked files) for when using `git commit -am"
 
-So in Chapter 0 we read something about "Local" and "Remote" repositories. 
+This means that if we're adding a new file that doesnt exist in our repo already, it will be "untracked" and therefore we need to **add** it ourselves to our commit.
 
-A **local** repository is the one on your machine, ideally it represents a mirror of the **remote** repository, which is the one everyone can access online.
+The way we do this is by using `git add path/to/file.txt` for a single file (path is from the root of the repo) or more commonly using `git add *` to add **all** untracked files.
+After this we commit like normal.
 
-So how do we do this?
+So lets do this, in your terminal run:
+`touch newfile.txt` This simple command just makes a new file called `newfile.txt`
 
-To save our current changes we **commit** our files, and then we **push** them to a remote repository.
+Now we use what we just learnt. 
 
-Let's try this out then.
-
-In this chapter there is a python file, that contains an error, that I've tried to make obvious to you.
-
-Using your text editor of choice open this file and fix it. If you're using vscode you should write `code .` in your terminal to open the folder to start editing
-
-(If you're using a different text editor I'm assuming you know how to open it :P)
-
-> "I've fixed the bug and saved my file. What now?"
-
-Great! Now we are going to make a commit, and use the message to convey what we changed
-
-In your terminal, write: `git commit -am "Fixed myfile.py"` 
-(I'm aware that you can commit straight from some of these editors, but keeping to the tutorial will help you be able to do this from anywhere)
-
-Now you might be wondering, why are we writing `-am` between the *commit* command and our message?
-
-These are called flags, and in essence they add functionality to the command after them. In this case we are adding the flags `a` and `m`. These two flags signify that we want to add the changes to all tracked files (more on this in chapter 2), and that we want to add a message to our commit.
-
-Unless you add these files manually, git will even remind you that you need to add these tracked files to the commit. Also making a commit with no message is pretty frowned upon, cause how are you going to be able to tell what you added with that commit otherwise?
-
-You might also wonder: "Why do I need to say I want to add all my tracked files?". You'll come to see that being able to **selectively add files to your commit** is a superpower of its own for bigger projects.
-
-Okay, enough waffling, its time for us to see our progress on our remote repo (github.com/...).
-
-Provided your commit was successful, all you need to do now is:
-
-`git push`
-
-Now if you refresh the github repo, you'll see your changes, and anyone will be able to access them.
-
-Now to go to Chapter 2 run the following command:
-`git checkout Chapter2`
-
-
+Use add, commit, and push to get this new file onto your remote repo.
 .
+If you're successful your repo should look like this:
 
+![image](https://github.com/StefVuck/gitgood-Git-Tutorial/assets/142335830/7c7f8e02-5ce9-4fae-a75b-c5062a638555)
 
+As you can see, we successfully added a new file created locally to our remote repo.
+
+## Group Work & git pull
+Question: What happens to your repo if someone in your coding group pushes their code to the remote repo?
+Answer: Nothing
+
+Again, git is made to be efficient, and if it was constantly scanning your remote repository that would ruin it. 
+But the question is valid, and you do need to keep your local repo up to date with the remote one to avoid code conflicts.
+
+The way you solve this is with `git pull`
+
+Just in the same way that you **PUSH** code from your machine to the remote repo, you **PULL** code from the remote repo to your machine. Makes sense right?
+
+It's probably a hassle to get someone else to help you here so here's what you'll do:
+
+On the github website:
+
+Beside the big code button, theres a **Add File** button, feel free to add what you want here, or just make a new file with the github editor.
+
+This acts as our update on the remote repo.
+
+Now back in git bash/terminal, run:
+`git pull`
+
+You should notice some files being added here.
+If the files been added correctly run `git checkout Chapter3` to start Chapter 3.
