@@ -1,7 +1,7 @@
 # gitgood-Git-Tutorial
 Beginners Tutorial for Git and Version Control
 
-If you're convinced and you're just looking for the tutorial, skip to : [Tutorial Start](#Tutorial-Start:-Chapter-0)
+If you're convinced and you're just looking for the tutorial, skip to : [Tutorial Start](#tutorial-start-chapter-0)
 
 ## Why use Git?
 Especially for smaller scale projects, its easy to scoff at the extra "complexity" of learning git, and using GitHub (or similar tools), however git is an essential tool to learn for any form of coding, heres why:
