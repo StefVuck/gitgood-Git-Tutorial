@@ -3,7 +3,7 @@ name: Test Run on Commit
 on:
   push:
     branches:
-      - main
+      - Chapter1
 
 jobs:
   test:
