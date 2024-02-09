@@ -1,0 +1,30 @@
+name: Test Run on Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check for typo error
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const fs = require('fs');
+            const filePath = './myfile.py';
+            const expectedLine = 'print("This is a typo error. It should be print instead of pront.")';
+
+            const fileContent = fs.readFileSync(filePath, 'utf8');
+            if (fileContent.includes(expectedLine)) {
+              console.log('No typo error found.');
+            } else {
+              console.error('Typo error found. Please correct the line in myfile.py.');
+              process.exit(1);
+            }
